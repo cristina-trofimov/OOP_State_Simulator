@@ -1,0 +1,18 @@
+state(Idle)
+state(Configuring)
+state(Active)
+state(Exit)
+
+alias(Exit, "done")
+
+initial(Idle)
+final(Exit)
+
+onentry_action(Configuring, action(log, "Green LED ON"))
+do_action(Configuring, proc("configure"))
+onexit_action(Configuring, action(log, "Green LED OFF"))
+
+transition(Idle, Configuring, event(call, input), null, null)
+transition(Configuring, Idle, event(call, cancel), null, null)
+transition(Configuring, Active,event(completion, null), null, null)
+transition(Active, Exit, event(time, 5), null, null)

@@ -2,13 +2,13 @@ package models;
 
 public class Transition {
 
-    private State source;
-    private State target;
-    private String event;
-    private String guard;
-    private String action;
+    protected State source;
+    protected State target;
+    protected Event event;
+    protected Guard guard;
+    protected Action action;
 
-    public Transition(State source, State target, String event, String guard, String action) {
+    public Transition(State source, State target, Event event, Guard guard, Action action) {
         this.source = source;
         this.target = target;
         this.event = event;
@@ -32,27 +32,31 @@ public class Transition {
         this.target = target;
     }
 
-    public String getEvent() {
+    public Event getEvent() {
         return event;
     }
 
-    public void setEvent(String event) {
+    public void setEvent(Event event) {
         this.event = event;
     }
 
-    public String getGuard() {
+    public Guard getGuard() {
         return guard;
     }
 
-    public void setGuard(String guard) {
+    public void setGuard(Guard guard) {
         this.guard = guard;
     }
 
-    public String getAction() {
+    public Action getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(Action action) {
         this.action = action;
+    }
+
+    public String toString() {
+        return source.getName() + " -> " + target.getName();
     }
 }
